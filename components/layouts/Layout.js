@@ -1,19 +1,17 @@
-import styled from '@emotion/styled'
 import React from 'react'
 import Header from './Header'
 import { Global, css} from "@emotion/core"
 import Head from 'next/head'
 
-
-export default function Layout(props) {
+const Layout=(props) => {
     return(
         <>
             <Global
                 styles={css`
                     :root {
-                        --gris:#3d3d3d
-                        --gris2: #6f6f6f
-                        --naranja: #DA552F
+                        --gris:#3d3d3d !important;
+                        --gris2: #6f6f6f !important;
+                        --naranja: #DA552F !important;
                     }   
                     html {
                         font-size: 62.5%;
@@ -62,3 +60,5 @@ export default function Layout(props) {
         </>
     );
 }
+
+export default Layout
