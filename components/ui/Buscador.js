@@ -32,7 +32,10 @@ export default function Busacador () {
         <form
             css={css` position: relative;`}
         >
-            <InputText type="text" />
+            <InputText type="text" 
+                placeholder="Buscar Producto"
+                
+            />
             <InputSubmit type="submit"> Buscar </InputSubmit>
         </form>
     )

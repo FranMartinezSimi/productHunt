@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 
 const Nav = styled.nav`
-    padding-left: 2rem
+    padding-left: 2rem;
     a {
         font-size: 1.8rem;
         margin-left: 2rem;
@@ -13,16 +13,18 @@ const Nav = styled.nav`
 
         &:last-of-type {
             margin-right:0;
-        }
-    }
+        };
+    };
 `;
+
+
 
 export default function Navegacion() {
     return(
-        <nav>
+        <Nav>
             <Link href="/">Home</Link>
-            <Link href="/">Populares</Link>
-            <Link href="/">Nuevo Producto</Link>
-        </nav>
+            <Link href="/populares">Populares</Link>
+            <Link href="/nuevo-producto">Nuevo Producto</Link>
+        </Nav>
     )
 }

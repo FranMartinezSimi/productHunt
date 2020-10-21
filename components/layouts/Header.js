@@ -25,10 +25,11 @@ const Logo = styled.p`
     font-weight:700;
     font-family: 'Roboto Slab', serif;
     margin-right: 2rem;
+    box-shadow: 2px 2px;
 `;
 
 const Header =() => {
-    const usuario = true;
+    const usuario = false;
 
     return(
         <header 
@@ -64,11 +65,14 @@ const Header =() => {
                       </>
                   ):(
                       <>
-                    <Link href="/">
+                    <Link href="/login">
                         <Boton
                             bgColor="true"
-                        >Login</Boton></Link>
-                    <Link href="/"><Boton>Cerrar Session</Boton></Link>
+                        >Login</Boton>
+                    </Link>
+                    <Link href="/crear-cuenta">
+                        <Boton>Crear Cuenta</Boton>
+                    </Link>
                       </>
                   ) }
                 </div>
