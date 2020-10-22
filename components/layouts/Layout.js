@@ -9,9 +9,9 @@ const Layout=(props) => {
             <Global
                 styles={css`
                     :root {
-                        --gris:#3d3d3d !important;
-                        --gris2: #6f6f6f !important;
-                        --naranja: #DA552F !important;
+                        --gris:#3d3d3d ;
+                        --gris2: #6f6f6f;
+                        --naranja: #DA552F;	 
                     }   
                     html {
                         font-size: 62.5%;
