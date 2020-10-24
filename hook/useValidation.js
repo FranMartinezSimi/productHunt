@@ -33,7 +33,7 @@ export default function UseValidation(initialValue, validate, func) {
 		gurdarSubmitForm(true)
 	}
 	return {
-		vavaloresl,
+		valores,
 		errores,
 		submitForm,
 		handleSubmit,
