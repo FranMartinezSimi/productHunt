@@ -32,11 +32,18 @@ export default function UseValidation(initialValue, validate, func) {
 		guardarErrores(erroresValidacion)
 		gurdarSubmitForm(true)
 	}
+	//Cuando se realiza el evento Blur
+
+	const handleBlur = () =>{
+		const erroresValidacion =  validate(valores)
+		guardarErrores(erroresValidacion)
+	}
+
 	return {
 		valores,
 		errores,
-		submitForm,
 		handleSubmit,
-		handleChange
+		handleChange,
+		handleBlur
 	}
 }

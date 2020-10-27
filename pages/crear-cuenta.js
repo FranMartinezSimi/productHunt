@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 import { Formulario } from '../components/ui/Formulario'
 import { Campo } from '../components/ui/Formulario'
 import { InputSubmit } from '../components/ui/Formulario'
+import { Error } from '../components/ui/Formulario'
 
 import UseValidation from '../hook/useValidation'
 import CreateAccountValidations from '../validation/validarCrearCuenta';
@@ -21,9 +22,9 @@ const CrearCuenta =() => {
 	const { 
 		valores,
 		errores,
-		submitForm,
 		handleSubmit,
-		handleChange
+		handleChange,
+		handleBlur
 	 } = UseValidation(Initial_State, CreateAccountValidations, createAccount)
 
 	 const { nombre, email, password } = valores;
@@ -40,8 +41,9 @@ const CrearCuenta =() => {
 										text-align:center;
 										margin-top: 5rem;
 									` }
+									
 								>Crear Cuenta</h1>
-								<Formulario>
+								<Formulario onSubmit= { handleSubmit }>
 									<Campo>
 										<label htmlFor="nombre">Nombre</label>
 										<input
@@ -51,8 +53,12 @@ const CrearCuenta =() => {
 											name="nombre"
 											value={nombre}
 											onChange={handleChange}
+											onBlur={handleBlur}
 										/>
 									</Campo>
+
+									{ errores.nombre && <Error>{errores.nombre}</Error>}
+
 									<Campo>
 										<label htmlFor="email">Email</label>
 										<input
@@ -62,8 +68,12 @@ const CrearCuenta =() => {
 											name="email"
 											value={email}
 											onChange={handleChange}
+											onBlur={handleBlur}
 										/>
 									</Campo>
+
+									{ errores.email && <Error>{errores.email}</Error>}
+
 									<Campo>
 										<label htmlFor="password">Password</label>
 										<input
@@ -73,8 +83,11 @@ const CrearCuenta =() => {
 											name="password"
 											value={password}
 											onChange={handleChange}
+											onBlur={handleBlur}
 										/>
 									</Campo>
+									
+									{ errores.password && <Error>{errores.password}</Error>}
 
 									<InputSubmit 
 										type="submit"
