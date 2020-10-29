@@ -1,4 +1,5 @@
 export default function CreateAccountValidations(values) {
+	
 	let errors = {};
 
 	if(!values.nombre) {
@@ -7,7 +8,7 @@ export default function CreateAccountValidations(values) {
 
 	if(!values.email) {
 		errors.email = "El mail es obligatorio";
-	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test()){
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
 		errors.email = "El mail no es valido"
 	}
 
