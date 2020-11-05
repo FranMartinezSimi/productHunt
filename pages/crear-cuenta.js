@@ -23,7 +23,7 @@ const Initial_State = {
 
 const CrearCuenta =() => {
 
-	const [error, guardarError] =  useState(false)
+	const [err, guardarError] =  useState(false)
 
 	const { 
 		valores,
@@ -36,15 +36,15 @@ const CrearCuenta =() => {
 	 const { nombre, email, password } = valores;
 
 	 async function createAccount(){
-		try {
-			await firebase.registrar(nombre, email, password)
-			console.log(`El usuario ${nombre} fue ingresado satisfactoriamente`)
+		 try {
+			 await firebase.registrar(nombre, email, password);
+			console.log(`El usuario ${nombre}, ha sido creado satisfactoriamente`)
 			Router.push('/')
-		}catch(error){
-			console.error("Error al crear un nuevo usuario", error)
-			guardarError(error.message)
+		 } catch (error) {
+			 console.error(`Errror al crear el usuario ${nombre}`, error.message)
+		 }
 		}
-	}
+	
 
     return (
         <div>
@@ -102,7 +102,7 @@ const CrearCuenta =() => {
 									
 									{ errores.password && <Error>{errores.password}</Error>}
 
-									{ error && <Error>{error}</Error>}
+									{ err && <Error>{err}</Error>}
 
 									<InputSubmit 
 										type="submit"
