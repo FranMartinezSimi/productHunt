@@ -14,6 +14,7 @@ class Firebase {
 	//Registrar un nuevo usuario
 	async registrar(nombre, email, password){
 			const nuevoUsuario = await this.auth.createUserWithEmailAndPassword(email, password);
+
 			return await nuevoUsuario.user.updateProfile({ 
 				displayName: nombre
 			})
@@ -21,6 +22,10 @@ class Firebase {
 
 	async login(email, password) {
 		return this.auth.signInWithEmailAndPassword(email, password)
+	}
+
+	async cerrarSession() {
+		await this.auth.signOut()
 	}
 }
 const firebase = new Firebase();

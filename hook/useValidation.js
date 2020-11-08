@@ -17,7 +17,7 @@ export default function UseValidation(initialValue, validate, func) {
 			}
 			gurdarSubmitForm(false)
 		}
-	},[])
+	},[errores])
 	// Funcion que se activa conforme el usuario escribe algo
 	const handleChange = e => {
 		guardarValores({

@@ -36,7 +36,8 @@ const Login =() => {
 
 	 async function iniciarSeesion(){
 		 try {
-			 await firebase.login(email, password);
+			 const usuario = await firebase.login(email, password);
+			 console.log(usuario)
 			 Router.push('/')
 		 } catch (error) {
 			console.error(`Hubo un error al crear un usuario ${error.message}`)

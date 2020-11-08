@@ -11,6 +11,7 @@ import { Error } from '../components/ui/Formulario'
 
 import firebase from '../firebase';
 
+//validaciones
 import UseValidation from '../hook/useValidation'
 import CreateAccountValidations from '../validation/validarCrearCuenta';
 
@@ -23,7 +24,7 @@ const Initial_State = {
 
 const CrearCuenta =() => {
 
-	const [err, guardarError] =  useState(false)
+	const [ error, guardarError ] =  useState(false)
 
 	const { 
 		valores,
@@ -56,7 +57,9 @@ const CrearCuenta =() => {
 									` }
 									
 								>Crear Cuenta</h1>
-								<Formulario onSubmit= { handleSubmit }>
+								<Formulario onSubmit= { handleSubmit }
+									noValidate
+								>
 									<Campo>
 										<label htmlFor="nombre">Nombre</label>
 										<input
