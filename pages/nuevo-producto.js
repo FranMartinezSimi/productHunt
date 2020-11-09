@@ -16,6 +16,15 @@ import UseValidation from '../hook/useValidation'
 import CreateAccountValidations from '../validation/validarCrearCuenta';
 
 
+
+const Initial_State = {
+	Nombre: '',
+	Empresa: '',
+	Imagen: '',
+	Url: '',
+	Descripcion: ''
+}
+
 export default function NuevoProducto() {
 
 	const [ error, guardarError ] =  useState(false)
@@ -28,7 +37,7 @@ export default function NuevoProducto() {
 		handleBlur
 	 } = UseValidation(Initial_State, CreateAccountValidations, createAccount)
 
-	 const { nombre, email, password } = valores;
+	 const { Nombre, Empresa, Imagen, Url, Descripcion } = valores;
 
 	 async function createAccount(){
 		 try {
@@ -54,6 +63,10 @@ export default function NuevoProducto() {
 								<Formulario onSubmit= { handleSubmit }
 									noValidate
 								>
+
+									<fieldset>
+										<legend>Informacion General </legend>
+									
 									<Campo>
 										<label htmlFor="nombre">Nombre</label>
 										<input
@@ -61,7 +74,7 @@ export default function NuevoProducto() {
 											id="nombre"
 											placeholder="Tu Nombre"
 											name="nombre"
-											value={nombre}
+											value={Nombre}
 											onChange={handleChange}
 											onBlur={handleBlur}
 										/>
@@ -111,7 +124,28 @@ export default function NuevoProducto() {
 
 									{ errores.Empresa && <Error>{errores.Empresa}</Error>}
 
-									{ err && <Error>{err}</Error>}
+									</fieldset>
+
+									<fieldset>
+										<legend>Sobre tu producto</legend>
+									
+
+									<Campo>
+										<label htmlFor="descripcion">Descripcion</label>
+										<textarea
+											id="descripcion"
+											name="descripcion"
+											value={Descripcion}
+											onChange={handleChange}
+											onBlur={handleBlur}
+										/>
+									</Campo>
+
+									{ errores.descripcion && <Error>{errores.descripcion}</Error>}
+
+									</fieldset>
+
+									{ error && <Error>{err}</Error>}
 
 									<InputSubmit 
 										type="submit"

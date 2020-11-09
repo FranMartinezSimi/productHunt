@@ -14,6 +14,8 @@ function useAutenticacion() {
 		})
 		return () => unSuscribe()
 	}, [])
+
+	return usuarioAutenticado
 }
 
 export default useAutenticacion

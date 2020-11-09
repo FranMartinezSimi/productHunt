@@ -105,7 +105,7 @@ const CrearCuenta =() => {
 									
 									{ errores.password && <Error>{errores.password}</Error>}
 
-									{ err && <Error>{err}</Error>}
+									{ error && <Error>{err}</Error>}
 
 									<InputSubmit 
 										type="submit"
