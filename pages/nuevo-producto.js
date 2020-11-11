@@ -1,7 +1,7 @@
-import React,{ useState } from 'react'
+import React,{ useState, useContext } from 'react'
 import Layout from '../components/layouts/Layout'
 import { css } from '@emotion/core'
-import Router from 'next/router'
+import Router,{ useRouter } from 'next/router'
 
 
 import { Formulario } from '../components/ui/Formulario'
@@ -9,11 +9,11 @@ import { Campo } from '../components/ui/Formulario'
 import { InputSubmit } from '../components/ui/Formulario'
 import { Error } from '../components/ui/Formulario'
 
-import firebase from '../firebase';
+import { FirebaseContext } from '../firebase';
 
 //validaciones
 import UseValidation from '../hook/useValidation'
-import CreateAccountValidations from '../validation/validarCrearCuenta';
+import createProductValidation from '../validation/validarCrearProducto';
 
 
 
@@ -35,19 +35,37 @@ export default function NuevoProducto() {
 		handleSubmit,
 		handleChange,
 		handleBlur
-	 } = UseValidation(Initial_State, CreateAccountValidations, createAccount)
+	 } = UseValidation(Initial_State, createProductValidation, createProduct)
 
 	 const { Nombre, Empresa, Imagen, Url, Descripcion } = valores;
 
-	 async function createAccount(){
-		 try {
-			 await firebase.registrar(nombre, email, password);
-			console.log(`El usuario ${nombre}, ha sido creado satisfactoriamente`)
-			Router.push('/')
-		 } catch (error) {
-			 console.error(`Errror al crear el usuario ${nombre}`, error.message)
-		 }
+	 const router = useRouter()
+
+	 const { usuario, firebase } = useContext(FirebaseContext)
+ 
+
+	 async function createProduct(){
+
+		if(!usuario) {
+			//si no esta logeado
+			return router.push('/login')
 		}
+
+		//crear el objeto de producto
+
+		const producto = {
+			Nombre,
+			Empresa,
+			Url,
+			Descripcion,
+			votos: 0,
+			comentarios: [],
+			creado: Date.now()
+		} 
+
+		//insertar en base de datos
+		firebase.db.collection('productos').add(producto )
+	 }
 	
 
     return (
@@ -108,21 +126,20 @@ export default function NuevoProducto() {
 										/>
 									</Campo>
 
-									{ errores.Imagen && <Error>{errores.Imagen}</Error>}
-
 									<Campo>
-										<label htmlFor="url">URL</label>
-										<input
-											type="url"
-											id="url"
-											name="url"
-											value={Url}
-											onChange={handleChange}
-											onBlur={handleBlur}
-										/>
-									</Campo>
+                   						 <label htmlFor="url">URL</label>
+                   						<input 
+                        					type="text"
+                        					id="url"
+                        					name="url"
+                        					placeholder="URL de tu producto"
+                        					value={Url}
+                        					onChange={handleChange}
+                        					onBlur={handleBlur}
+                    				/>
+                					</Campo>
 
-									{ errores.Empresa && <Error>{errores.Empresa}</Error>}
+									{ errores.Url && <Error>{errores.Url}</Error>}
 
 									</fieldset>
 
@@ -141,7 +158,7 @@ export default function NuevoProducto() {
 										/>
 									</Campo>
 
-									{ errores.descripcion && <Error>{errores.descripcion}</Error>}
+									{ errores.Descripcion && <Error>{errores.Descripcion}</Error>}
 
 									</fieldset>
 
