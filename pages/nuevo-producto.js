@@ -74,6 +74,7 @@ export default function NuevoProducto() {
 
 		//insertar en base de datos
 		firebase.db.collection('productos').add(producto )
+		return router.push('/')
 	 }
 
 	 const handleUploadStart = () => {
@@ -88,14 +89,14 @@ export default function NuevoProducto() {
 		console.error(error);
 	};
   
-	const handleUploadSuccess = nombre => {
+	const handleUploadSuccess = Nombre => {
 		guardarProgreso(100);
 		guardarSubiendo(false);
-		guardarNombre(nombre)
+		guardarNombre(Nombre)
 		firebase
 			.storage
 			.ref("productos")
-			.child(nombre)
+			.child(Nombre)
 			.getDownloadURL()
 			.then(url => {
 			  console.log(url);
