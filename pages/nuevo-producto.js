@@ -109,33 +109,31 @@ export default function NuevoProducto() {
         <div>
             <Layout>
                 <h1
-									css = { css`
-										text-align:center;
-										margin-top: 5rem;
-									` }
+					css = { css`
+						text-align:center;
+						margin-top: 5rem;
+					` }
 									
 								>Nuevo Producto</h1>
 								<Formulario onSubmit= { handleSubmit }
 									noValidate
 								>
-
-									<fieldset>
-										<legend>Informacion General </legend>
-									
+								<fieldset>
+									<legend>Informacion General </legend>
 									<Campo>
-										<label htmlFor="nombre">Nombre</label>
+									<label htmlFor="Nombre">Nombre</label>
 										<input 
-                        type="text"
-                        id="nombre"
-                        placeholder="Nombre del Producto"
-                        name="nombre"
-                        value={Nombre}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                    />
+                       				 	type="text"
+                       				 	id="Nombre"
+                       				 	placeholder="Nombre del Producto"
+                       				 	name="Nombre"
+                        				value={Nombre}
+                        				onChange={handleChange}
+                        				onBlur={handleBlur}
+                    				/>
 									</Campo>
 
-									{ errores.nombre && <Error>{errores.nombre}</Error>}
+									{ errores.Nombre && <Error>{errores.Nombre}</Error>}
 									<Campo>
 										<label htmlFor="Empresa">Empresa</label>
 										<input
@@ -167,11 +165,11 @@ export default function NuevoProducto() {
 									</Campo>
 
 									<Campo>
-                   						 <label htmlFor="url">URL</label>
+                   						 <label htmlFor="Url">URL</label>
                    						<input 
-                        					type="text"
-                        					id="url"
-                        					name="url"
+                        					type="url"
+                        					id="Url"
+                        					name="Url"
                         					placeholder="URL de tu producto"
                         					value={Url}
                         					onChange={handleChange}
@@ -188,10 +186,10 @@ export default function NuevoProducto() {
 									
 
 									<Campo>
-										<label htmlFor="descripcion">Descripcion</label>
+										<label htmlFor="Descripcion">Descripcion</label>
 										<textarea
-											id="descripcion"
-											name="descripcion"
+											id="Descripcion"
+											name="Descripcion"
 											value={Descripcion}
 											onChange={handleChange}
 											onBlur={handleBlur}
@@ -206,7 +204,7 @@ export default function NuevoProducto() {
 
 									<InputSubmit 
 										type="submit"
-										value="Crear cuenta"
+										value="Crear Producto"
 									/>
 								</Formulario>
             </Layout>

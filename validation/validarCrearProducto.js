@@ -12,7 +12,7 @@ export default function createProductValidation(values) {
 
 	if(!values.Url) {
 		errores.Url = "la Url es obligatoria"
-	} else if( !/^(ftp|http|https):\/\/[^ "]+$/.test(valores.Url)) {
+	} else if( !/^(ftp|http|https):\/\/[^ "]+$/.test(values.Url)) {
 		errores.Url = "URL mal formateada o no válida"
 	}
 
