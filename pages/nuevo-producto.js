@@ -18,7 +18,7 @@ import createProductValidation from '../validation/validarCrearProducto';
 
 
 const Initial_State = {
-	Nombre: '',
+	Nombre:'',
 	Empresa: '',
 	Imagen: '',
 	Url: '',
@@ -124,15 +124,15 @@ export default function NuevoProducto() {
 									
 									<Campo>
 										<label htmlFor="nombre">Nombre</label>
-										<input
-											type="text"
-											id="nombre"
-											placeholder="Tu Nombre"
-											name="nombre"
-											value={Nombre}
-											onChange={handleChange}
-											onBlur={handleBlur}
-										/>
+										<input 
+                        type="text"
+                        id="nombre"
+                        placeholder="Nombre del Producto"
+                        name="nombre"
+                        value={Nombre}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    />
 									</Campo>
 
 									{ errores.nombre && <Error>{errores.nombre}</Error>}

@@ -2,8 +2,8 @@ export default function createProductValidation(values) {
 	
 	let errores = {};
 
-	if(!values.nombre) {
-		errores.nombre ="El nombre es obligatorio"
+	if(!values.Nombre) {
+		errores.Nombre ="El nombre es obligatorio"
 	}
 
 	if(!values.Empresa) {
