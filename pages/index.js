@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Layout from '../components/layouts/Layout'
-import DetallesProductos from '../components/layouts/DetallesProducto'
+import DetallesProducto from '../components/layouts/DetallesProducto'
 import { FirebaseContext } from '../firebase'
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
 	
 	useEffect(() => {
 		const obtenerProductos = () => {
-			firebase.db.collecion('producto').orderBy('creado', 'desc').onSnapshot(manejarSnapshot)
+			firebase.db.collection('producto').orderBy('creado', 'desc').onSnapshot(manejarSnapshot)
 		}
 		obtenerProductos()
 	}, [])
@@ -32,7 +32,10 @@ export default function Home() {
 					<div className="contenedor">
 						<div className="bg-white">
 							{productos.map(producto => (
-								DetallesProductos
+									< DetallesProducto
+										key = {producto.id}
+										producto = { producto }
+									/>
 							))}
 						</div>
 					</div>
